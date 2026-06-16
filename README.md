@@ -1,56 +1,181 @@
-# Welcome to your Expo app 👋
+# Zaivo Wallpapers
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern wallpaper application built with **React Native**, **Expo**, and **Expo Router**.
 
-## Get started
+**Zaivo Wallpapers** lets users discover, preview, and download high-quality wallpapers with a clean user experience, smooth navigation, and support for both dark and light themes.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## ✨ Features
 
-2. Start the app
+* 🖼️ Browse beautiful wallpapers
+* 🔍 Full-screen wallpaper preview
+* ⬇️ Download wallpapers
+* 🌙 Dark & Light theme support
+* 📱 Modern and responsive UI
+* ⚡ Fast and smooth performance
+* 🧭 Expo Router navigation
+* 👤 Account Information page
+* 🔒 Privacy Policy page
+* 📄 Terms of Service page
+* ⚖️ Licenses page
+* ℹ️ Version Information page
+* 📢 Disclaimer page
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🚀 Tech Stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* React Native
+* Expo SDK 56
+* Expo Router
+* TypeScript
+* React Native Reanimated
+* React Native Gesture Handler
+* Async Storage
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 📂 Project Structure
 
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+src
+├── app
+│   ├── (tabs)
+│   ├── (nobottomtabs)
+│   ├── _layout.tsx
+│   └── ...
+├── assets
+├── components
+├── constants
+├── hooks
+├── utils
+└── types
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-### Other setup steps
+## 📦 Installation
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Clone the repository:
 
-## Learn more
+```bash
+git clone https://github.com/yourusername/zaivo-wallpapers.git
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Navigate to the project directory:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+cd zaivo-wallpapers
+```
 
-## Join the community
+Install dependencies:
 
-Join our community of developers creating universal apps.
+```bash
+npm install
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Start the Expo development server:
+
+```bash
+npm start
+```
+
+Run on Android:
+
+```bash
+npm run android
+```
+
+Run on iOS:
+
+```bash
+npm run ios
+```
+
+---
+
+## 🌙 Theme Support
+
+Zaivo Wallpapers supports:
+
+* Light Theme
+* Dark Theme
+* Persistent theme preferences using Async Storage
+
+Your preferred theme is automatically restored when the application launches.
+
+---
+
+## 📱 Screens
+
+### Wallpapers
+
+* Home
+* For You
+* Wallpaper Preview
+
+### Settings & Information
+
+* Account Information
+* Privacy Policy
+* Terms of Service
+* Licenses
+* Version Information
+* Disclaimer
+
+---
+
+## 🔧 Built With
+
+* Expo Router for file-based navigation
+* TypeScript for type safety
+* Async Storage for local persistence
+* Custom themed components
+* Responsive layouts for Android and iOS
+
+---
+
+## ⚠️ Disclaimer
+
+Zaivo Wallpapers is developed primarily as a learning and educational project.
+
+Some informational pages such as:
+
+* Privacy Policy
+* Terms of Service
+* Licenses
+* Disclaimer
+
+may contain sample or placeholder content intended for demonstration purposes only.
+
+Users are responsible for ensuring that any downloaded wallpapers are used in accordance with applicable laws and content ownership rights.
+
+---
+
+## 📌 Current Version
+
+**v1.0.4**
+
+### What's New
+
+* Improved wallpaper browsing experience
+* Enhanced dark mode support
+* Better navigation and UI consistency
+* Performance optimizations
+* Bug fixes and stability improvements
+
+---
+
+## 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+Feel free to fork the repository, open issues, or submit pull requests.
+
+---
+
+## 📄 License
+
+This project is provided for educational and personal learning purposes.
+Copyright © Zaivo Wallpapers.

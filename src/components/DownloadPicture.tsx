@@ -1,16 +1,53 @@
 import { WallpaperWithDetails } from "@/hooks/useWallpapers";
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
-import { useRef } from "react";
-import { Image, Pressable, StyleSheet, useColorScheme, View } from "react-native";
+import { useRef, useState } from "react";
+import { ActivityIndicator, Alert, Image, Pressable, StyleSheet, useColorScheme, View } from "react-native";
 import { ThemedView } from "./themed-view";
 import { Colors } from "@/constants/theme";
 import { ThemedText } from "./themed-text";
+import downloadWallpaper from "@/utils/download-wallpaper";
 
 const DownloadPicture = ({ wallpaper, onClose }: { wallpaper: WallpaperWithDetails, onClose: () => void }) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const theme = useColorScheme()
-  const iconColor = theme === "dark" ? Colors.dark.text: Colors.light.text
+  const iconColor = theme === "dark" ? Colors.dark.text : Colors.light.text
+  const [primaryLoading, setPrimaryLoading] = useState(false)
+  const [secondaryLoading, setSecondaryLoading] = useState(false)
+
+  const handleDownload = async ({ name, url, buttonType }: { name: string, url: string, buttonType: "primary" | "secondary" }) => {
+
+    await downloadWallpaper({
+      url: url,
+      name: name,
+
+      onStart: () => {
+        buttonType === "primary" ? setPrimaryLoading(true) : setSecondaryLoading(true);
+      },
+
+      onSuccess: () => {
+        setPrimaryLoading(false)
+        setSecondaryLoading(false)
+
+        Alert.alert(
+          'Download Complete',
+          'Wallpaper saved to your gallery'
+        );
+      },
+
+      onError: (error) => {
+        setPrimaryLoading(false)
+        setSecondaryLoading(false)
+
+        Alert.alert(
+          'Download Failed',
+          error.message
+        );
+      },
+    });
+  };
+
+
   return (
     <BottomSheet
       ref={bottomSheetRef}
@@ -24,23 +61,38 @@ const DownloadPicture = ({ wallpaper, onClose }: { wallpaper: WallpaperWithDetai
 
     >
       <BottomSheetView style={{ width: '100%', height: "100%" }}>
-        <ThemedView style={{flex:1, borderTopLeftRadius:15, borderTopRightRadius:15}}>
+        <ThemedView style={{ flex: 1, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
           <Image style={{ width: '100%', height: "60%", borderRadius: 15 }} source={{ uri: wallpaper.url }} />
           <View style={style.icon_container}>
             <Ionicons onPress={() => bottomSheetRef.current?.close()} style={style.icon} name="close" size={23} />
             <View style={style.icon_innter_container}>
               <Ionicons style={style.icon} name={wallpaper.liked ? "heart" : "heart-outline"} size={23} />
-              <Ionicons style={style.icon} name="download-outline" size={23} />
+              <Pressable disabled={secondaryLoading || primaryLoading} onPress={() => handleDownload({ name: wallpaper.name, url: wallpaper.url, buttonType:"secondary" })} style={style.icon}>
+                {secondaryLoading ? (
+                  <View style={{padding:2}}><ActivityIndicator color={Colors.dark.text} /></View>
+                ) : (
+                  <Ionicons style={{color:"white"}}  name="download-outline" size={23} />
+                )}
+              </Pressable>
             </View>
           </View>
           <ThemedText style={{ fontSize: 25, fontWeight: '700', alignSelf: "center", padding: 10 }}>{wallpaper.name}</ThemedText>
-          <Pressable style={[style.download_button, {borderColor: theme === "dark"? Colors.dark.text: Colors.light.text}]}>
-            <Ionicons
-              style={{ color: 'white', marginRight: 6 }}
-              name="download-outline"
-              size={23}
-            />
-            <ThemedText style={{ color: 'white' }}>Get Wallpaper</ThemedText>
+          <Pressable disabled={primaryLoading || secondaryLoading} onPress={() => handleDownload({ name: wallpaper.name, url: wallpaper.url, buttonType: "primary" })} style={[style.download_button, { borderColor: theme === "dark" ? Colors.dark.text : Colors.light.text }]}>
+
+            {primaryLoading ? (
+              <View style={{paddingHorizontal:56,paddingVertical:2}}><ActivityIndicator color={Colors.dark.text} /></View>
+            ) : (
+              <>
+                <Ionicons
+                  style={{ color: 'white', marginRight: 6 }}
+                  name="download-outline"
+                  size={23}
+                />
+                <ThemedText style={{ color: 'white' }}>
+                  Get Wallpaper
+                </ThemedText>
+              </>
+            )}
           </Pressable>
           <View style={{ marginLeft: 30, marginTop: 10 }}>
             <View style={{ flexDirection: "row", alignItems: "center", gap: 10, marginBottom: 10 }}>
@@ -91,7 +143,7 @@ const style = StyleSheet.create({
     backgroundColor: "#00000035",
     borderRadius: 999,
     padding: 5,
-    color:"white"
+    color: "white"
   },
   download_button: {
     flexDirection: 'row',
@@ -101,7 +153,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 90,
     paddingVertical: 12,
     borderRadius: 10,
-    borderWidth:2
+    borderWidth: 2
   },
   add_icon: {
     position: "absolute",

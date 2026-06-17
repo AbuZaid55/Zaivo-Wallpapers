@@ -26,11 +26,11 @@ export default function AccountInfo() {
             },
           ]}
         >
-          <ThemedText style={styles.avatarText}>AZ</ThemedText>
+          <ThemedText style={styles.avatarText}>XZ</ThemedText>
         </View>
 
         <ThemedText style={styles.name}>
-          Abu Zaid
+          XYZ
         </ThemedText>
 
         <ThemedText
@@ -41,7 +41,7 @@ export default function AccountInfo() {
             },
           ]}
         >
-          zaid70979@gmail.com
+          xyz@example.com
         </ThemedText>
       </View>
 
@@ -59,13 +59,13 @@ export default function AccountInfo() {
 
         <InfoRow
           label="Username"
-          value="Abuzaid55"
+          value="xyz55"
           secondaryColor={colors.textSecondary}
         />
 
         <InfoRow
           label="Email"
-          value="zaid70979@gmail.com"
+          value="xyz@example.com"
           secondaryColor={colors.textSecondary}
         />
 

@@ -6,6 +6,25 @@ A modern wallpaper application built with **React Native**, **Expo**, and **Expo
 
 ---
 
+## 📥 Download Builds
+
+Download the latest release builds:
+
+### Android APK
+
+* 📱 APK Download:
+  https://expo.dev/artifacts/eas/td2tjmnnU2XvUg_1eSjlGo_kUIk2IrII0V_4Olt-hm0.apkv
+
+### Android App Bundle (AAB)
+
+* 📦 AAB Download:
+  https://expo.dev/artifacts/eas/KIHp2QG00Z1kG9kblHv_gzrDqQELrDO5s9P9PxldlLU.aab
+
+> **Note:** The APK file can be installed directly on Android devices for testing, while the AAB file is intended for Google Play Store distribution.
+
+
+---
+
 ## ✨ Features
 
 * 🖼️ Browse beautiful wallpapers
@@ -43,14 +62,12 @@ src
 ├── app
 │   ├── (tabs)
 │   ├── (nobottomtabs)
-│   ├── _layout.tsx
-│   └── ...
+│   └── _layout.tsx
 ├── assets
 ├── components
 ├── constants
 ├── hooks
-├── utils
-└── types
+└── utils
 ```
 
 ---
